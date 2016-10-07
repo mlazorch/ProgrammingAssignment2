@@ -15,7 +15,7 @@
 makeCacheMatrix <- function(x = matrix()) {
     ## inv will hold the inverse.  initialize it to NULL.
     inv <- NULL
-    ## Create set function which will set the value of the matix (x) to the new matrix object
+    ## Create set function which will set the value of the matrix (x) to the new matrix object
     ## (newMatrix)
     set <- function(newMatrix) {
         x <<- newMatrix
@@ -48,9 +48,14 @@ cacheSolve <- function(x, ...) {
         return(myInverse)
     }
     ## the inverse is not cached, so calculate, store and return it
+    
+    ## get the matrix data
     mData <- x$get()
+    ## calcuate the inverse of the matrix
     myInverse <- solve(mData, ...)
+    ## store the inverse
     x$setinverse(myInverse)
+    ## return the inverse
     myInverse
     
 }
